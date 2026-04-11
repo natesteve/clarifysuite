@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Your Free License Key — ClarifySuite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0e1420;
+      --surface2: #141c2e;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: rgba(232,234,240,0.45);
+      --med: #00d4aa;
+      --vet: #4ade80;
+      --dent: #38bdf8;
+      --gold: #f59e0b;
+      --error: #f87171;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Figtree', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    .orb { position: fixed; border-radius: 50%; filter: blur(130px); opacity: 0.1; pointer-events: none; z-index: 0; }
+    .orb-1 { width: 600px; height: 600px; background: var(--med); top: -200px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--dent); bottom: -100px; left: -100px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px; color: white; letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .nav-logo em { font-style: italic; color: var(--med); }
+
+    .nav-back {
+      font-size: 13px; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-back:hover { color: white; }
+
+    /* MAIN LAYOUT */
+    main {
+      position: relative; z-index: 1;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 60px;
+      gap: 80px;
+    }
+
+    /* LEFT — info panel */
+    .info-panel {
+      max-width: 420px;
+      flex: 1;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .info-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--med);
+      margin-bottom: 16px;
+    }
+
+    .info-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400; letter-spacing: -1.5px;
+      color: white; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .info-title em { font-style: italic; color: var(--med); }
+
+    .info-sub {
+      font-size: 15px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 36px;
+    }
+
+    .perks {
+      display: flex; flex-direction: column; gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .perk {
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+
+    .perk-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(0,212,170,0.1);
+      border: 1px solid rgba(0,212,170,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0; margin-top: 1px;
+    }
+
+    .perk-text { font-size: 14px; color: var(--muted); line-height: 1.55; }
+    .perk-text strong { color: white; font-weight: 500; }
+
+    .ext-trio {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+
+    .ext-chip {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 12px; font-weight: 500;
+    }
+
+    .chip-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .chip-dot.med { background: var(--med); box-shadow: 0 0 6px var(--med); }
+    .chip-dot.vet { background: var(--vet); box-shadow: 0 0 6px var(--vet); }
+    .chip-dot.dent { background: var(--dent); box-shadow: 0 0 6px var(--dent); }
+
+    /* RIGHT — form panel */
+    .form-panel {
+      width: 100%; max-width: 420px;
+      flex-shrink: 0;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--med), var(--dent), var(--vet));
+    }
+
+    .form-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 24px; color: white;
+      font-weight: 400; letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
+      font-size: 13px; color: var(--muted);
+      margin-bottom: 28px; line-height: 1.5;
+    }
+
+    .field { margin-bottom: 16px; }
+
+    .field label {
+      display: block;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: white;
+      font-family: 'Figtree', sans-serif;
+      font-size: 14px; font-weight: 300;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+      appearance: none; -webkit-appearance: none;
+    }
+
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.3)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: rgba(255,255,255,0.04);
+      padding-right: 36px;
+    }
+
+    .field input:focus, .field select:focus {
+      border-color: rgba(0,212,170,0.4);
+      background: rgba(0,212,170,0.04);
+    }
+
+    .field input::placeholder { color: rgba(255,255,255,0.2); }
+    .field select option { background: #1a2035; color: white; }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--med), #0090ff);
+      color: white; font-family: 'Figtree', sans-serif;
+      font-weight: 700; font-size: 15px;
+      padding: 14px; border: none; border-radius: 12px;
+      cursor: pointer; margin-top: 8px;
+      transition: opacity 0.2s, transform 0.15s;
+      box-shadow: 0 8px 24px rgba(0,212,170,0.2);
+      position: relative;
+    }
+
+    .submit-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .submit-btn .btn-spinner {
+      display: none;
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto;
+    }
+
+    .submit-btn.loading .btn-text { display: none; }
+    .submit-btn.loading .btn-spinner { display: block; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-note {
+      font-size: 11px; color: rgba(255,255,255,0.2);
+      text-align: center; margin-top: 14px; line-height: 1.5;
+    }
+
+    .form-note a { color: rgba(255,255,255,0.35); text-decoration: underline; }
+
+    /* SUCCESS STATE */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .success-icon {
+      width: 64px; height: 64px;
+      background: rgba(0,212,170,0.1);
+      border: 1px solid rgba(0,212,170,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin: 0 auto 20px;
+    }
+
+    .success-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px; color: white;
+      font-weight: 400; margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .success-sub {
+      font-size: 14px; color: var(--muted);
+      line-height: 1.6; margin-bottom: 24px;
+    }
+
+    .license-display {
+      background: rgba(0,212,170,0.06);
+      border: 1px solid rgba(0,212,170,0.2);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 24px;
+    }
+
+    .license-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--med); margin-bottom: 8px;
+    }
+
+    .license-key {
+      font-family: 'DM Mono', monospace;
+      font-size: 20px; font-weight: 500;
+      color: white; letter-spacing: 2px;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      width: 100%; background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: white; font-family: 'Figtree', sans-serif;
+      font-size: 13px; font-weight: 500;
+      padding: 11px; border-radius: 10px;
+      cursor: pointer; transition: background 0.15s;
+      margin-bottom: 10px;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.1); }
+
+    .next-steps {
+      font-size: 13px; color: var(--muted);
+      line-height: 1.6; text-align: left;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 16px;
+    }
+
+    .next-steps ol { padding-left: 16px; }
+    .next-steps li { margin-bottom: 4px; }
+    .next-steps strong { color: white; font-weight: 500; }
+
+    /* ERROR */
+    .error-msg {
+      display: none;
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.2);
+      border-radius: 10px; padding: 12px 14px;
+      font-size: 13px; color: #fca5a5;
+      margin-bottom: 16px; line-height: 1.5;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative; z-index: 1;
+      padding: 24px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 16px; color: white; letter-spacing: -0.3px;
+    }
+    .footer-logo em { font-style: italic; color: var(--med); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      main { flex-direction: column; gap: 40px; padding-top: 100px; }
+      .info-panel { max-width: 100%; }
+      nav { padding: 14px 20px; }
+      footer { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Clarify<em>Suite</em></a>
+    <a href="index.html" class="nav-back">← Back to home</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- LEFT INFO -->
+    <div class="info-panel">
+      <div class="info-eyebrow">Free account</div>
+      <h1 class="info-title">Start learning<br><em>smarter</em> today.</h1>
+      <p class="info-sub">
+        Create your free account and get a license key instantly.
+        No credit card required — just your email.
+      </p>
+
+      <div class="perks">
+        <div class="perk">
+          <div class="perk-icon">⚡</div>
+          <div class="perk-text"><strong>10 free explanations per day</strong> across all three extensions — MedClarify, VetClarify, and DentClarify.</div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🎯</div>
+          <div class="perk-text"><strong>Tailored to your program.</strong> Set your degree once — RN, Paramedic, DVM, Dental Hygiene, and more — and every explanation speaks your language.</div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🌍</div>
+          <div class="perk-text"><strong>Works in any language.</strong> Highlight text in Spanish, French, Portuguese, or any major language — explanations match automatically.</div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🔓</div>
+          <div class="perk-text"><strong>Upgrade anytime</strong> for unlimited access at just $5/month per extension, or $40/year for the full suite.</div>
+        </div>
+      </div>
+
+      <div class="ext-trio">
+        <div class="ext-chip"><span class="chip-dot med"></span> MedClarify</div>
+        <div class="ext-chip"><span class="chip-dot vet"></span> VetClarify</div>
+        <div class="ext-chip"><span class="chip-dot dent"></span> DentClarify</div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="form-panel">
+      <div class="form-card">
+
+        <!-- FORM -->
+        <div id="form-view">
+          <div class="form-title">Create free account</div>
+          <div class="form-sub">Your license key will be emailed to you instantly.</div>
+
+          <div class="error-msg" id="error-msg"></div>
+
+          <div class="field">
+            <label>Email address</label>
+            <input type="email" id="email-input" placeholder="you@university.edu" autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label>Your program <span style="color:rgba(255,255,255,0.2); font-weight:300; text-transform:none; letter-spacing:0">(optional — helps tailor explanations)</span></label>
+            <select id="program-select">
+              <option value="">— Select your program —</option>
+              <optgroup label="Nursing">
+                <option value="rn">Registered Nurse (RN)</option>
+                <option value="lpn">Licensed Practical Nurse (LPN)</option>
+                <option value="np">Nurse Practitioner (NP)</option>
+                <option value="crna">CRNA (Nurse Anesthetist)</option>
+              </optgroup>
+              <optgroup label="Medical School">
+                <option value="mddo">MD / DO Student</option>
+              </optgroup>
+              <optgroup label="EMS">
+                <option value="emtb">EMT-Basic (EMT-B)</option>
+                <option value="aemt">Advanced EMT (AEMT)</option>
+                <option value="paramedic">Paramedic</option>
+                <option value="ccparamedic">Critical Care Paramedic (CCP)</option>
+              </optgroup>
+              <optgroup label="Pre-Health">
+                <option value="premed">Pre-Med</option>
+                <option value="prepa">Pre-PA</option>
+                <option value="prevet">Pre-Veterinary</option>
+                <option value="predental">Pre-Dental</option>
+              </optgroup>
+              <optgroup label="Allied Health">
+                <option value="rt">Respiratory Therapy (RT)</option>
+                <option value="dentalhygiene">Dental Hygiene</option>
+                <option value="caa">CAA (Anesthesiologist Assistant)</option>
+              </optgroup>
+              <optgroup label="Veterinary">
+                <option value="prevetmed">Pre-Veterinary Medicine</option>
+                <option value="dvmstudent">DVM Student</option>
+                <option value="vettech">Veterinary Technician</option>
+                <option value="vetnursing">Veterinary Nursing</option>
+                <option value="equine">Equine Medicine</option>
+                <option value="exotic">Exotic / Zoo Animal Medicine</option>
+              </optgroup>
+              <optgroup label="Dental">
+                <option value="dmddds">DMD / DDS Student</option>
+                <option value="dentalhygiene">Dental Hygiene</option>
+                <option value="dentalassisting">Dental Assisting</option>
+                <option value="dentalspecialty">Dental Specialty</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="healthsciences">General Health Sciences</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <button class="submit-btn" id="submit-btn" onclick="handleRegister()">
+            <span class="btn-text">Get my free license key</span>
+            <div class="btn-spinner"></div>
+          </button>
+
+          <div class="form-note">
+            By registering you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.<br/>
+            We'll only email you your license key and important account updates.
+          </div>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-state" id="success-view">
+          <div class="success-icon">✓</div>
+          <div class="success-title">You're all set!</div>
+          <p class="success-sub">Your license key is below and has been sent to your email. Paste it into any Clarify extension to activate.</p>
+
+          <div class="license-display">
+            <div class="license-label">Your License Key</div>
+            <div class="license-key" id="license-key-display">—</div>
+          </div>
+
+          <button class="copy-btn" onclick="copyKey()">📋 Copy license key</button>
+
+          <div class="next-steps">
+            <strong style="font-size:12px; letter-spacing:0.5px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Next steps</strong>
+            <ol style="margin-top:8px;">
+              <li>Install <strong>MedClarify</strong>, <strong>VetClarify</strong>, or <strong>DentClarify</strong> from the Chrome or Firefox store</li>
+              <li>Click the extension icon in your browser toolbar</li>
+              <li>Paste your license key and save</li>
+              <li>Highlight any text on a medical page → right-click → Explain!</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Clarify<em>Suite</em></div>
+    <div class="footer-copy">© 2025 ClarifySuite. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const BACKEND_URL = 'https://your-app.up.railway.app'; // UPDATE after deploying
+
+    let currentLicenseKey = '';
+
+    async function handleRegister() {
+      const email = document.getElementById('email-input').value.trim();
+      const program = document.getElementById('program-select').value;
+      const btn = document.getElementById('submit-btn');
+      const errorEl = document.getElementById('error-msg');
+
+      // Validate email
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      // Loading state
+      btn.classList.add('loading');
+      btn.disabled = true;
+      errorEl.style.display = 'none';
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, program })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Registration failed. Please try again.');
+        }
+
+        // Show success
+        currentLicenseKey = data.licenseKey || '';
+        document.getElementById('license-key-display').textContent = currentLicenseKey || '(Check your email)';
+        document.getElementById('form-view').style.display = 'none';
+        document.getElementById('success-view').style.display = 'block';
+
+      } catch (err) {
+        showError(err.message || 'Something went wrong. Please try again.');
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('error-msg');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    function copyKey() {
+      if (!currentLicenseKey) return;
+      navigator.clipboard.writeText(currentLicenseKey).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '✓ Copied!';
+        btn.style.color = '#00d4aa';
+        setTimeout(() => {
+          btn.textContent = '📋 Copy license key';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+
+    // Allow Enter key to submit
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && document.getElementById('form-view').style.display !== 'none') {
+        handleRegister();
+      }
+    });
+  </script>
+</body>
+</html>

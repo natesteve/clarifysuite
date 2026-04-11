@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — ClarifySuite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0e1420;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: rgba(232,234,240,0.5);
+      --med: #00d4aa;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Figtree', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,12,20,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px; color: white; letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .nav-logo em { font-style: italic; color: var(--med); }
+
+    .nav-back {
+      font-size: 13px; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: white; }
+
+    .page-wrap {
+      position: relative; z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--med); margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400; letter-spacing: -1px;
+      color: white; margin-bottom: 8px;
+    }
+
+    .page-date {
+      font-size: 13px; color: var(--muted);
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .summary-box {
+      background: rgba(0,212,170,0.05);
+      border: 1px solid rgba(0,212,170,0.15);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+
+    .summary-box h3 {
+      font-size: 14px; font-weight: 600;
+      color: var(--med); margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-box ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .summary-box li {
+      font-size: 14px; color: var(--muted);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    .summary-box li::before {
+      content: '✓';
+      color: var(--med); font-weight: 600;
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 24px; font-weight: 400;
+      color: white; letter-spacing: -0.3px;
+      margin-top: 40px; margin-bottom: 14px;
+    }
+
+    p { font-size: 15px; color: var(--muted); margin-bottom: 14px; }
+
+    ul.content-list {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul.content-list li {
+      font-size: 15px; color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    strong { color: var(--text); font-weight: 500; }
+
+    a { color: var(--med); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 40px 0;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .highlight-box p { margin-bottom: 0; }
+
+    footer {
+      position: relative; z-index: 1;
+      padding: 24px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 16px; color: white;
+    }
+    .footer-logo em { font-style: italic; color: var(--med); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      footer { padding: 20px 24px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Clarify<em>Suite</em></a>
+    <a href="index.html" class="nav-back">← Back to home</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <div class="page-eyebrow">Legal</div>
+    <h1 class="page-title">Privacy Policy</h1>
+    <div class="page-date">Last updated: April 10, 2026 &nbsp;·&nbsp; Effective immediately upon account creation</div>
+
+    <div class="summary-box">
+      <h3>The short version</h3>
+      <ul>
+        <li>We collect your email address and usage data only — nothing else.</li>
+        <li>The text you highlight is never stored by us. Ever.</li>
+        <li>We do not sell your data to anyone.</li>
+        <li>Payments are handled entirely by Stripe — we never see your card details.</li>
+        <li>You can delete your account and all associated data at any time by emailing us.</li>
+      </ul>
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>ClarifySuite ("we", "us", or "our") operates the browser extensions MedClarify, VetClarify, and DentClarify, along with the website clarifysuite.app. We are a small independent software product. If you have any questions about this policy, contact us at <a href="mailto:privacy@clarifysuite.app">privacy@clarifysuite.app</a>.</p>
+
+    <h2>2. What we collect</h2>
+    <p>We collect only what is necessary to provide the service:</p>
+    <ul class="content-list">
+      <li><strong>Email address</strong> — used to create your account, send your license key, and communicate important account updates.</li>
+      <li><strong>License key</strong> — a randomly generated key tied to your account, used to authenticate extension requests.</li>
+      <li><strong>Program selection</strong> — the health sciences program you select in the extension (e.g. "Paramedic", "RN Student"). Stored to personalize explanations. This is optional.</li>
+      <li><strong>Usage count</strong> — we track how many explanations you have used per day per extension to enforce free tier limits. We do not store what you searched or what explanations were returned.</li>
+      <li><strong>Stripe customer ID</strong> — if you subscribe to a paid plan, we store your Stripe customer ID to manage your subscription. We never store payment card details.</li>
+    </ul>
+
+    <h2>3. What we do NOT collect</h2>
+    <div class="highlight-box">
+      <p><strong>We do not store the text you highlight.</strong> When you highlight text and use a Clarify extension, that text is transmitted to our server solely to forward it to Anthropic's API for processing. It is never written to a database, log file, or any persistent storage. Once the explanation is returned to your browser, the text is gone from our systems entirely.</p>
+    </div>
+    <p>We also do not collect:</p>
+    <ul class="content-list">
+      <li>The AI-generated explanations returned to you</li>
+      <li>The websites or pages you use the extensions on</li>
+      <li>Your IP address beyond what is standard in web server request logs (which are not retained)</li>
+      <li>Browser fingerprints, device identifiers, or tracking cookies</li>
+      <li>Any information about your browsing history</li>
+    </ul>
+
+    <h2>4. How we use your data</h2>
+    <p>We use the data we collect solely to:</p>
+    <ul class="content-list">
+      <li>Create and manage your account</li>
+      <li>Authenticate your license key when the extension makes a request</li>
+      <li>Enforce daily usage limits on free accounts</li>
+      <li>Send transactional emails (license key delivery, subscription receipts, account notices)</li>
+      <li>Manage your paid subscription through Stripe</li>
+    </ul>
+    <p>We do not use your data for advertising, profiling, or any purpose beyond operating the service.</p>
+
+    <h2>5. Third-party services</h2>
+    <p>We use the following third-party services to operate ClarifySuite:</p>
+    <ul class="content-list">
+      <li><strong>Anthropic</strong> — The text you highlight is sent to Anthropic's API to generate explanations. Anthropic processes this data under their own <a href="https://www.anthropic.com/privacy" target="_blank">Privacy Policy</a>. By default, Anthropic does not use API-submitted data to train their models.</li>
+      <li><strong>Stripe</strong> — All payment processing is handled by Stripe. We never receive or store your payment card details. Stripe's privacy policy is available at <a href="https://stripe.com/privacy" target="_blank">stripe.com/privacy</a>.</li>
+      <li><strong>Railway</strong> — Our backend server is hosted on Railway. Your account data (email, license key, usage count) is stored on Railway-hosted infrastructure in the United States.</li>
+    </ul>
+
+    <h2>6. Data retention</h2>
+    <p>We retain your account data (email, license key, program selection, usage counts) for as long as your account is active. If you request account deletion, we will permanently delete all data associated with your account within 14 days.</p>
+    <p>To request deletion, email <a href="mailto:privacy@clarifysuite.app">privacy@clarifysuite.app</a> from your registered email address.</p>
+
+    <h2>7. Data security</h2>
+    <p>All data transmitted between your browser, our server, and Anthropic's API is encrypted via HTTPS. License keys are randomly generated and not derived from personal information. We do not store passwords — authentication is handled solely via license keys.</p>
+
+    <h2>8. Children's privacy</h2>
+    <p>ClarifySuite is intended for use by students and professionals in health sciences programs. We do not knowingly collect data from anyone under the age of 13. If you believe a child has created an account, contact us at <a href="mailto:privacy@clarifysuite.app">privacy@clarifysuite.app</a> and we will delete it promptly.</p>
+
+    <h2>9. Your rights</h2>
+    <p>Depending on your location, you may have rights including access to your data, correction of inaccurate data, deletion of your data, and objection to certain processing. To exercise any of these rights, contact us at <a href="mailto:privacy@clarifysuite.app">privacy@clarifysuite.app</a>.</p>
+
+    <h2>10. Changes to this policy</h2>
+    <p>If we make material changes to this Privacy Policy, we will notify registered users by email before the changes take effect. The "Last updated" date at the top of this page will always reflect the most recent revision.</p>
+
+    <h2>11. Contact</h2>
+    <p>Questions, concerns, or requests regarding this Privacy Policy can be directed to:<br/>
+    <a href="mailto:privacy@clarifysuite.app">privacy@clarifysuite.app</a></p>
+
+    <div class="section-divider"></div>
+    <p style="font-size:13px; color:rgba(255,255,255,0.2);">This Privacy Policy applies to all ClarifySuite products including MedClarify, VetClarify, DentClarify, and the clarifysuite.app website.</p>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">Clarify<em>Suite</em></div>
+    <div class="footer-copy">© 2025 ClarifySuite. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
