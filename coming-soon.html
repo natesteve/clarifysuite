@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClarifySuite — Coming Soon</title>
+  <meta name="description" content="AI-powered study tools for health sciences students. Coming soon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0e1420;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: rgba(232,234,240,0.45);
+      --med: #00d4aa;
+      --vet: #4ade80;
+      --dent: #38bdf8;
+      --pharm: #f472b6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Figtree', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    .orb { position: fixed; border-radius: 50%; filter: blur(130px); opacity: 0.08; pointer-events: none; z-index: 0; }
+    .orb-1 { width: 600px; height: 600px; background: var(--med); top: -200px; right: -100px; }
+    .orb-2 { width: 500px; height: 500px; background: var(--pharm); bottom: -150px; left: -150px; }
+    .orb-3 { width: 300px; height: 300px; background: var(--dent); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+    .wrap {
+      position: relative; z-index: 1;
+      max-width: 560px;
+      width: 100%;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 28px; color: white;
+      letter-spacing: -0.5px; margin-bottom: 40px;
+    }
+    .logo em { font-style: italic; color: var(--med); }
+
+    .ext-pills {
+      display: flex; gap: 8px;
+      justify-content: center; flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .pill {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px; padding: 7px 16px;
+      font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dot.med { background: var(--med); box-shadow: 0 0 6px var(--med); }
+    .dot.vet { background: var(--vet); box-shadow: 0 0 6px var(--vet); }
+    .dot.dent { background: var(--dent); box-shadow: 0 0 6px var(--dent); }
+    .dot.pharm { background: var(--pharm); box-shadow: 0 0 6px var(--pharm); }
+
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -2px; color: white;
+      margin-bottom: 20px;
+    }
+
+    h1 em { font-style: italic; color: var(--med); }
+
+    .sub {
+      font-size: 16px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 48px;
+      max-width: 420px; margin-left: auto; margin-right: auto;
+    }
+
+    .notify-form {
+      display: flex; gap: 10px;
+      max-width: 420px; margin: 0 auto 16px;
+      flex-wrap: wrap; justify-content: center;
+    }
+
+    .notify-input {
+      flex: 1; min-width: 220px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 13px 16px;
+      color: white; font-family: 'Figtree', sans-serif;
+      font-size: 14px; outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .notify-input:focus { border-color: rgba(0,212,170,0.4); }
+    .notify-input::placeholder { color: rgba(255,255,255,0.2); }
+
+    .notify-btn {
+      background: linear-gradient(135deg, var(--med), #0090ff);
+      color: white; font-family: 'Figtree', sans-serif;
+      font-weight: 700; font-size: 14px;
+      padding: 13px 24px; border: none;
+      border-radius: 10px; cursor: pointer;
+      transition: opacity 0.15s, transform 0.15s;
+      white-space: nowrap;
+      box-shadow: 0 6px 24px rgba(0,212,170,0.2);
+    }
+
+    .notify-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .notify-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .notify-note {
+      font-size: 12px; color: rgba(255,255,255,0.2);
+      margin-bottom: 56px;
+    }
+
+    .success-msg {
+      display: none;
+      background: rgba(0,212,170,0.08);
+      border: 1px solid rgba(0,212,170,0.2);
+      border-radius: 12px; padding: 16px 20px;
+      font-size: 14px; color: var(--med);
+      max-width: 420px; margin: 0 auto 56px;
+      line-height: 1.5;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px; margin-bottom: 48px;
+    }
+
+    .feature {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 16px;
+      font-size: 13px; color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .feature strong { display: block; color: white; font-weight: 500; margin-bottom: 4px; font-size: 14px; }
+
+    .footer-note {
+      font-size: 12px; color: rgba(255,255,255,0.15);
+    }
+
+    .footer-note a { color: rgba(255,255,255,0.25); text-decoration: none; }
+    .footer-note a:hover { color: rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="wrap">
+
+    <div class="logo">Clarify<em>Suite</em></div>
+
+    <div class="ext-pills">
+      <div class="pill"><span class="dot med"></span> MedClarify</div>
+      <div class="pill"><span class="dot vet"></span> VetClarify</div>
+      <div class="pill"><span class="dot dent"></span> DentClarify</div>
+      <div class="pill"><span class="dot pharm"></span> PharmClarify</div>
+    </div>
+
+    <h1>Something big is<br><em>coming soon.</em></h1>
+
+    <p class="sub">
+      AI-powered browser extensions that explain any clinical, veterinary, dental, or pharmacology text — tailored to your exact program and scope of practice.
+    </p>
+
+    <div class="notify-form" id="notify-form">
+      <input class="notify-input" type="email" id="notify-email" placeholder="Enter your email to be notified" />
+      <button class="notify-btn" id="notify-btn" onclick="handleNotify()">Notify me</button>
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      ✓ You're on the list! We'll email you the moment ClarifySuite launches.
+    </div>
+
+    <div class="notify-note" id="notify-note">No spam. Launch notification only.</div>
+
+    <div class="features" style="grid-template-columns: repeat(2, 1fr); max-width: 480px; margin-left: auto; margin-right: auto;">
+      <div class="feature">
+        <strong>Highlight & explain</strong>
+        Select any text, right-click, get a plain-language breakdown instantly.
+      </div>
+      <div class="feature">
+        <strong>Tailored to your level</strong>
+        From EMT-B to CRNA — explanations matched to your scope of practice.
+      </div>
+      <div class="feature">
+        <strong>Any language</strong>
+        Highlights in Spanish, French, or any major language — explains in kind.
+      </div>
+      <div class="feature">
+        <strong>Free to start</strong>
+        10 free explanations per day. Upgrade anytime for unlimited access.
+      </div>
+    </div>
+
+    <div class="footer-note">
+      © 2026 ClarifySuite · <a href="mailto:support@clarifysuite.app">Contact</a>
+    </div>
+
+  </div>
+
+  <script>
+    function handleNotify() {
+      const email = document.getElementById('notify-email').value.trim();
+      const btn = document.getElementById('notify-btn');
+
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        document.getElementById('notify-email').style.borderColor = 'rgba(248,113,113,0.5)';
+        setTimeout(() => {
+          document.getElementById('notify-email').style.borderColor = '';
+        }, 2000);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Done!';
+
+      document.getElementById('notify-form').style.display = 'none';
+      document.getElementById('notify-note').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+
+      // Once backend is live, send email to your waitlist endpoint
+      // fetch('https://your-app.up.railway.app/waitlist', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ email })
+      // });
+    }
+
+    document.getElementById('notify-email').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleNotify();
+    });
+  </script>
+</body>
+</html>
